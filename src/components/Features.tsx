@@ -1,5 +1,4 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { codeExamples } from "../data/constants";
 import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const features = [
@@ -57,10 +56,17 @@ const Features = () => {
         </div>
         <div className="space-y-16 sm:space-y-20 lg:space-y-32">
           {features.map((feature, key) => (
-            <div key={key} className={`flex flex-col lg:flex-grow items-center gap-8 sm:gap-12 ${feature.imagePosition==="right" ? "lg:flex-row-reverse" : ""}`}>
+            <div
+              key={key}
+              className={`flex flex-col items-center gap-8 sm:gap-12 ${feature.imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
+            >
               {/*Code Section*/}
               <div className="flex-1 w-full">
                 <div className="relative group">
+                  <div
+                    className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
+                  rounded-xl sm:rounded-2xl transition-all duration-500"
+                  />
                   <div
                     className="relative bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 
                   rounded-xl sm:rounded-2xl p-4 sm:p-6 overflow-hidden group-hover:border-1 
@@ -85,6 +91,7 @@ const Features = () => {
                           customStyle={{
                             margin: 0,
                             borderRadius: "8px",
+                            background: "transparent",
                             fontSize: "0.75rem",
                             lineHeight: "1.4",
                             height: "100%",
@@ -102,8 +109,12 @@ const Features = () => {
               {/*Text Section*/}
               <div className="flex-1 w-full">
                 <div className="max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
-                  <h3 className="text-4xl">{feature.title}</h3>
-                  <p>{feature.description}</p>
+                  <h3 className="text-4xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-300 text-base text-xl sm:text-lg leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
               </div>
             </div>
